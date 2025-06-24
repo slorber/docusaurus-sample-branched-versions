@@ -4,7 +4,7 @@
 
 set -euxo pipefail
 
-branches=("v1" "v2")
+branches=("v2" "v1")
 
 refs_to_fetch=()
 
