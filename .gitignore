@@ -21,3 +21,7 @@ yarn-error.log*
 
 /versioned_docs/
 /versions.json
+
+worktrees
+
+.idea

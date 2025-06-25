@@ -19,10 +19,16 @@ if [[ "${#refs_to_fetch[@]}" -gt 0 ]]; then
   git fetch --no-tags origin "${refs_to_fetch[@]}"
 fi
 
+rm -rf worktrees
+mkdir worktrees
+rm -rf versioned_docs
+mkdir versioned_docs
+
 for branch in "${branches[@]}"; do
-  worktree_dir="versioned_docs/version-${branch}"
-  rm -rf "${worktree_dir}"
+  worktree_dir="worktrees/version-${branch}"
   git worktree add "${worktree_dir}" "origin/${branch}" --detach --force
+  versioned_dir="worktrees/version-${branch}"
+  ln -s "../worktrees/version-${branch}/docs" "versioned_docs/version-${branch}"
 done
 
 printf '%s\n' "${branches[@]}" | jq -R . | jq -s . | tee versions.json

@@ -42,10 +42,17 @@ const config: Config = {
       "classic",
       {
         docs: {
+
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/felipecrs/docusaurus-sample-branched-versions/tree/master/",
+          editUrl: ({version, ...otherUsefulParams}) => {
+
+              },
+          versions: {
+            "v1": {
+
+            }
+          },
         },
         theme: {
           customCss: "./src/css/custom.css",
